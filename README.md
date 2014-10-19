@@ -1,6 +1,8 @@
 ## Go to the next link:
 :warning: The homework is developed(.Rmd) in [Link1](http://github.com/warderm6/RepData_PeerAssessment1/blob/master/Assesment_1.Rmd)
+
 :warning: The pdf version: [Link2](http://github.com/warderm6/RepData_PeerAssessment1/blob/master/Assesment_1.pdf)
+
 :warning: The obtained figures are:
 
 ![Alt text](fig_1.png)
