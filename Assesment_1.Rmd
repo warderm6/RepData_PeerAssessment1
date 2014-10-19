@@ -2,7 +2,7 @@
 title: "Peer Assessment 1"
 author: "Jorge Salvador Paredes Merino"
 date: "Sunday, October 19, 2014"
-output: html_document
+output: pdf_document
 ---
 
 ## Loading and preprocessing the data
@@ -18,7 +18,8 @@ library(lattice) # use in histogram
 library(dplyr)   # use in preprocessing
 
 # Get csv dataset from the zip file
-data = read.csv(unz("activity.zip", "activity.csv"), header=TRUE, colClasses = c("integer","Date","integer"))
+data = read.csv(unz("activity.zip", "activity.csv"), header=TRUE, 
+                colClasses = c("integer","Date","integer"))
 ```
 
 ## What is mean total number of steps taken per day?
@@ -52,7 +53,8 @@ Mean and median are not equals by they are relative close.
 
 ```{r}
 # Calculate average steps for each of 5-minute interval during a 24-hour period
-avg_daily_activity = data %>% group_by(interval) %>% summarize(meanSteps = mean(steps, na.rm = TRUE))
+avg_daily_activity = data %>% group_by(interval) %>% 
+  summarize(meanSteps = mean(steps, na.rm = TRUE))
 
 qplot(x=interval, y=meanSteps, data = avg_daily_activity,  geom = "line",
       xlab="Day interval",
@@ -110,7 +112,8 @@ Owing to imputatation of  many missing values with the means, we got identicals 
 Sys.setlocale("LC_TIME", "English") # To ensure english weekdays
 aux$weekdayType = ifelse( weekdays(aux$date) %in% c("Saturday", "Sunday"), "weekend", "weekday")
 
-data_intervales = aux %>% group_by(interval, weekdayType) %>% summarize(meanSteps = mean(steps, na.rm = TRUE))
+data_intervales = aux %>% group_by(interval, weekdayType) %>% 
+  summarize(meanSteps = mean(steps, na.rm = TRUE))
 
 qplot(x=interval, y=meanSteps, data = data_intervales,  colour = weekdayType, geom = "line",
       xlab="Day interval",
